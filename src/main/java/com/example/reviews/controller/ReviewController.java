@@ -19,10 +19,11 @@ public class ReviewController {
 	private ReviewService reviewService;
 	
 	@GetMapping("/")
-	public ResponseEntity<Map<String, Object>> getAllReview(        
-			@RequestParam(required = false) String title,
+	public ResponseEntity<Map<String, Object>> getReview(        
+			@RequestParam(required = false) String productId,
+			@RequestParam(required = false) String score,
 	        @RequestParam(defaultValue = "0") int page,
 	        @RequestParam(defaultValue = "3") int size){
-		return ResponseEntity.ok().body(reviewService.getAllReview(page, size));
+		return ResponseEntity.ok().body(reviewService.getReview(productId, score, page, size));
 	};
 }

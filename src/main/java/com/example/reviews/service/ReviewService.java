@@ -13,7 +13,7 @@ public interface ReviewService {
 
 	Review updateReview(Review review);
 
-	Map<String, Object> getAllReview(int page, int size);
+	Map<String, Object> getReview(String productId, String score, int page, int size);
 
 	Review getReviewById(long reviewId);
 

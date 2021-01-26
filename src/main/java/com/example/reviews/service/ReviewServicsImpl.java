@@ -35,10 +35,20 @@ public class ReviewServicsImpl implements ReviewService{
 	}
 
 	@Override
-	public Map<String, Object> getAllReview(int page, int size) {
+	public Map<String, Object> getReview(String productId, String score, int page, int size) {
 		List<Review> reviews = new ArrayList<Review>();
 		Pageable paging = PageRequest.of(page, size);
-		Page<Review> pageTuts = reviewRepository.findAll(paging);
+		Page<Review> pageTuts;
+		
+		if(score == null && productId == null) 
+			pageTuts = reviewRepository.findAll(paging);
+		else if(score != null && productId == null)
+			pageTuts = reviewRepository.findByScore(score,paging);
+		else if(productId != null && score == null)
+			pageTuts = reviewRepository.findByProductIdContaining(productId,paging);
+		else
+			pageTuts = reviewRepository.findByScoreAndProductIdContaining(score, productId,paging);
+		
 		reviews = pageTuts.getContent();
 	    Map<String, Object> response = new HashMap<>();
 	    response.put("reviews", reviews);

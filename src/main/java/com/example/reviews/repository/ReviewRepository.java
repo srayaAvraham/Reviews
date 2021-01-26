@@ -8,5 +8,7 @@ import com.example.reviews.model.Review;
 
 public interface ReviewRepository extends JpaRepository<Review, Long>{
 
-	  Page<Review> findAll(Pageable pageable);
+	  Page<Review> findByScore(String score, Pageable pageable);
+	  Page<Review> findByProductIdContaining(String productId, Pageable pageable);
+	  Page<Review> findByScoreAndProductIdContaining(String score, String productId, Pageable pageable);
 }
