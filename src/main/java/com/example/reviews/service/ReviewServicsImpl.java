@@ -22,17 +22,6 @@ public class ReviewServicsImpl implements ReviewService{
 
 	@Autowired
 	private ReviewRepository reviewRepository;
-	@Override
-	public Review createReview(Review review) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Review updateReview(Review review) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Map<String, Object> getReview(String productId, String score, int page, int size) {
@@ -56,18 +45,6 @@ public class ReviewServicsImpl implements ReviewService{
 	    response.put("totalItems", pageTuts.getTotalElements());
 	    response.put("totalPages", pageTuts.getTotalPages());
 		return response;
-	}
-
-	@Override
-	public Review getReviewById(long reviewId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteReview(long id) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
